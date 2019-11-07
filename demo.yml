@@ -1,0 +1,6 @@
+actions:
+  - command: ls -l > list.txt
+    artifact: list.txt
+    target:
+      bucket: s3://my-backup-bucket
+      prefix: lists
