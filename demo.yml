@@ -1,6 +1,11 @@
 actions:
-  - command: ls -l > list.txt
-    artifact: list.txt
+  - directive:
+      command: ls -l
+    artifact:
+      path: list.txt
+      keep: false
     target:
       bucket: s3://my-backup-bucket
       prefix: lists
+notifications:
+  slack:

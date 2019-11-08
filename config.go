@@ -7,7 +7,8 @@ import (
 )
 
 type Config struct {
-	Actions []*Action
+	Actions       []*Action
+	Notifications *Notifications
 }
 
 func NewConfigFromFile(file string) (*Config, error) {
