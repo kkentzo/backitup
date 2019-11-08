@@ -5,14 +5,9 @@ import (
 	"os"
 )
 
-func main() {
-	c, err := NewConfigFromFile("demo.yml")
-	if err != nil {
-		os.Exit(1)
-	}
-	// execute the commands
+func Run(config *Config) error {
 	errors := []error{}
-	for _, action := range c.Actions {
+	for _, action := range config.Actions {
 		if err := action.Execute(); err != nil {
 			errors = append(errors, err)
 			continue
@@ -22,10 +17,23 @@ func main() {
 		}
 	}
 
-	if c.Notifications != nil {
-		err := c.Notifications.SendReport(errors)
+	if config.Notifier != nil {
+		err := config.Notifier.SendReport(errors)
 		if err != nil {
-			fmt.Printf("Notifiaction error: %s", err.Error())
+			return err
 		}
+	}
+	return nil
+}
+
+func main() {
+	config, err := NewConfigFromFile("demo.yml")
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	if err := Run(config); err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
 	}
 }

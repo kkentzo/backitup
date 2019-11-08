@@ -7,8 +7,8 @@ import (
 )
 
 type Config struct {
-	Actions       []*Action
-	Notifications *Notifications
+	Actions  []*Action
+	Notifier *Notifier `yaml:"notify"`
 }
 
 func NewConfigFromFile(file string) (*Config, error) {

@@ -15,4 +15,5 @@ func Test_NewFromFile(t *testing.T) {
 	assert.Equal(t, "list.txt", a.Artifact.Path)
 	assert.Equal(t, "s3://my-backup-bucket", a.Target.Bucket)
 	assert.Equal(t, "lists", a.Target.Prefix)
+	assert.Equal(t, "https://slack-webhook", c.Notifier.Slack)
 }

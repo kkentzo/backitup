@@ -7,5 +7,5 @@ actions:
     target:
       bucket: s3://my-backup-bucket
       prefix: lists
-notifications:
-  slack:
+notify:
+  slack: https://slack-webhook
