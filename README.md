@@ -1,4 +1,4 @@
 # backupd
 
-A daemon that can execute commands and can upload the resulting
+A program that can execute commands and upload the resulting
 artifacts to AWS S3.
