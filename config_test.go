@@ -7,7 +7,7 @@ import (
 )
 
 func Test_NewFromFile(t *testing.T) {
-	c, err := NewConfigFromFile("demo.yml")
+	c, err := NewConfigFromFile("sample.yml")
 	assert.Nil(t, err)
 	assert.Equal(t, 1, len(c.Actions))
 	a := c.Actions[0]
